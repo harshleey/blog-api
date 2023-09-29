@@ -1,6 +1,7 @@
 "use strict";
 import express from "express";
 import dotenv from "dotenv";
+import { logger } from "./middleware/logger.js";
 
 import blogRoute from "../src/routes/blog.js";
 import authRoute from "../src/routes/tokenAuth.js";
@@ -15,11 +16,6 @@ const DATABASE_URL = process.env.DATABASE_URL;
 
 // app.METHOD(PATH, HANDLER);
 app.use(express.static("public"));
-
-function logger(req, res, next) {
-  console.log(`Received ${req.method} request to ${req.path}`);
-  next();
-}
 
 app.use("/api/users", logger, authRoute);
 app.use("/api/blogs", logger, blogRoute);
