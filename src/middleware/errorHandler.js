@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { CustomError } from "../errors/custom-error.js";
+import { CustomError } from "../errors/custom-errors.js";
 
 function errorHandler(err, req, res, next) {
   if (err instanceof CustomError) {
