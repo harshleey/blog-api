@@ -1,17 +1,18 @@
-"use strict";
-import express from "express";
-import dotenv from "dotenv";
-import { logger } from "./middleware/logger.js";
-import { errorHandler } from "./middleware/errorHandler.js";
+/* eslint-disable no-undef */
+'use strict';
+const express = require('express');
+const dotenv = require('dotenv');
+const { logger } = require('./middleware/logger.js');
+const { errorHandler } = require('./middleware/errorHandler.js');
 
-import blogRoute from "../src/routes/blog.js";
-import authRoute from "../src/routes/tokenAuth.js";
+const blogRoute = require('./routes/blog.js');
+const authRoute = require('./routes/tokenAuth.js');
 
 const app = express();
 app.use(express.json());
 dotenv.config();
 
-//Env variables
+// Env variables
 const PORT = process.env.PORT;
 
 // Implement middlewares
@@ -19,11 +20,12 @@ app.use(logger);
 app.use(errorHandler);
 
 // app.METHOD(PATH, HANDLER);
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-app.use("/api/users", authRoute);
-app.use("/api/blogs", blogRoute);
+app.use('/api/users', authRoute);
+app.use('/api/blogs', blogRoute);
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    // eslint-disable-next-line no-console
+    console.log(`Server running on port ${PORT}`);
 });

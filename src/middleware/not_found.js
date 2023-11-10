@@ -1,6 +1,8 @@
-import { StatusCodes } from "http-status-codes";
+/* eslint-disable no-undef */
+const { StatusCodes } = require('http-status-codes');
+
 function notFound(req, res) {
-  res.status(StatusCodes.NOT_FOUND).send("Route does not exist.");
+    res.status(StatusCodes.NOT_FOUND).send('Route does not exist.');
 }
 
-export { notFound };
+module.exports = { notFound };

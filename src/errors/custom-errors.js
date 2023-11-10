@@ -1,8 +1,11 @@
+/* eslint-disable no-undef */
+const { StatusCodes } = require('http-status-codes');
+
 class CustomError extends Error {
-  constructor(message, statusCode) {
-    super(message);
-    this.message = message;
-    this.statusCode = statusCode;
-  }
+    constructor(message, statusCode) {
+        super(message);
+        this.statusCode = statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
+    }
 }
-export { CustomError };
+
+module.exports = { CustomError };

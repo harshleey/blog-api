@@ -1,3 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+/* eslint-disable no-undef */
+const { PrismaClient } = require('@prisma/client');
 const database = new PrismaClient();
-export { database };
+module.exports = { database };
